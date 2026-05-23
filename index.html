@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aisan Music</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      color:white;
+    }
+
+    header{
+      padding:60px 20px;
+      text-align:center;
+      background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    }
+
+    header h1{
+      font-size:40px;
+      margin-bottom:10px;
+    }
+
+    header p{
+      color:#ddd;
+    }
+
+    .container{
+      max-width:900px;
+      margin:auto;
+      padding:20px;
+    }
+
+    .song{
+      background:#1e293b;
+      padding:20px;
+      border-radius:20px;
+      margin-bottom:20px;
+    }
+
+    .song h2{
+      margin-bottom:10px;
+    }
+
+    .song p{
+      margin-bottom:15px;
+      color:#ccc;
+    }
+
+    audio{
+      width:100%;
+      margin-bottom:15px;
+    }
+
+    .download{
+      display:inline-block;
+      padding:12px 20px;
+      background:#6366f1;
+      color:white;
+      text-decoration:none;
+      border-radius:10px;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Aisan Music</h1>
+  <p>Kumpulan lagu original karya sendiri</p>
+</header>
+
+<div class="container">
+
+  <div class="song">
+    <h2>Judul Lagu</h2>
+    <p>Deskripsi lagu kamu.</p>
+
+    <audio controls>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <a class="download"
+       href="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+       download>
+       Download Lagu
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Aisan Music
+</footer>
+
+</body>
+</html>
