@@ -1,111 +1,372 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aisan Music</title>
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial,sans-serif;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
-    body{
-      background:#0f172a;
-      color:white;
+    body {
+      min-height: 100vh;
+      color: #ffffff;
+      background:
+        radial-gradient(circle at top left, rgba(124,58,237,0.35), transparent 35%),
+        radial-gradient(circle at top right, rgba(236,72,153,0.25), transparent 35%),
+        #020617;
     }
 
-    header{
-      padding:60px 20px;
-      text-align:center;
-      background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    header {
+      padding: 28px 18px 20px;
+      display: flex;
+      justify-content: center;
     }
 
-    header h1{
-      font-size:40px;
-      margin-bottom:10px;
+    .nav {
+      width: 100%;
+      max-width: 1050px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      background: rgba(15,23,42,0.65);
+      backdrop-filter: blur(14px);
     }
 
-    header p{
-      color:#ddd;
+    .logo {
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
-    .container{
-      max-width:900px;
-      margin:auto;
-      padding:20px;
+    .badge {
+      font-size: 12px;
+      color: #c4b5fd;
+      border: 1px solid rgba(196,181,253,0.4);
+      padding: 7px 10px;
+      border-radius: 999px;
     }
 
-    .song{
-      background:#1e293b;
-      padding:20px;
-      border-radius:20px;
-      margin-bottom:20px;
+    .hero {
+      max-width: 1050px;
+      margin: 20px auto 30px;
+      padding: 30px 18px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
     }
 
-    .song h2{
-      margin-bottom:10px;
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 84px);
+      line-height: 0.95;
+      margin-bottom: 18px;
     }
 
-    .song p{
-      margin-bottom:15px;
-      color:#ccc;
+    .hero h1 span {
+      color: #a78bfa;
     }
 
-    audio{
-      width:100%;
-      margin-bottom:15px;
+    .hero p {
+      color: #cbd5e1;
+      font-size: 17px;
+      max-width: 560px;
+      margin-bottom: 24px;
     }
 
-    .download{
-      display:inline-block;
-      padding:12px 20px;
-      background:#6366f1;
-      color:white;
-      text-decoration:none;
-      border-radius:10px;
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    footer{
-      text-align:center;
-      padding:30px;
-      color:#aaa;
+    .btn {
+      display: inline-block;
+      padding: 13px 18px;
+      border-radius: 14px;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #7c3aed, #ec4899);
+    }
+
+    .btn-dark {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, rgba(124,58,237,0.35), rgba(236,72,153,0.25));
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px;
+      padding: 22px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    }
+
+    .cover {
+      aspect-ratio: 1 / 1;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04)),
+        linear-gradient(135deg, #6d28d9, #db2777, #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 58px;
+      margin-bottom: 18px;
+    }
+
+    .now-playing {
+      color: #e9d5ff;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .hero-card h2 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .hero-card p {
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 1050px;
+      margin: auto;
+      padding: 0 18px 50px;
+    }
+
+    .section-title {
+      margin-bottom: 18px;
+    }
+
+    .section-title h2 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    .section-title p {
+      color: #94a3b8;
+    }
+
+    .song-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .song {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 18px;
+      background: rgba(15,23,42,0.78);
+      border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 24px;
+      padding: 16px;
+      backdrop-filter: blur(12px);
+    }
+
+    .song-cover {
+      width: 90px;
+      height: 90px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #7c3aed, #ec4899, #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+    }
+
+    .song-content h3 {
+      font-size: 21px;
+      margin-bottom: 6px;
+    }
+
+    .song-content p {
+      color: #cbd5e1;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    audio {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .small-btn {
+      display: inline-block;
+      padding: 10px 13px;
+      border-radius: 12px;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .download {
+      background: linear-gradient(135deg, #7c3aed, #ec4899);
+    }
+
+    .about {
+      margin-top: 36px;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(15,23,42,0.75);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .about h2 {
+      margin-bottom: 10px;
+    }
+
+    .about p {
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 18px 40px;
+      color: #64748b;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        max-width: 420px;
+      }
+
+      .song {
+        grid-template-columns: 1fr;
+      }
+
+      .song-cover {
+        width: 100%;
+        height: 160px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Aisan Music</h1>
-  <p>Kumpulan lagu original karya imajinasi sendiri yang buat oleh AI</p>
-</header>
+  <header>
+    <div class="nav">
+      <div class="logo">AISAN MUSIC</div>
+      <div class="badge">Original Songs</div>
+    </div>
+  </header>
 
-<div class="container">
+  <section class="hero">
+    <div>
+      <h1>Dengerin Lagu <span>AiSan</span></h1>
+      <p>
+        Kumpulan lagu original karya AiSan Music. Kamu bisa dengarkan langsung
+        dan download lagu dari halaman ini.
+      </p>
 
-  <div class="AiSan Music">
-    <h2>Temani Sampai Pagi</h2>
-    <p>Dibuat oleh Aisan Music Disempurnakan Oleh AI </p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#lagu">Dengarkan Sekarang</a>
+        <a class="btn btn-dark" href="https://wa.me/" target="_blank">Kontak WhatsApp</a>
+      </div>
+    </div>
 
-    <audio controls>
-      <source src="https://czmcgqwtclnsxnwuyvza.supabase.co/storage/v1/object/public/music/Temani%20sampai%20pagi%20-%20AiSan%20(1).mp3" type="audio/mpeg">
-    </audio>
+    <div class="hero-card">
+      <div class="cover">🎧</div>
+      <div class="now-playing">Now Playing</div>
+      <h2>Temani Sampai Pagi</h2>
+      <p>Single original dari AiSan Music.</p>
+    </div>
+  </section>
 
-    <a class="download"
-       href="https://czmcgqwtclnsxnwuyvza.supabase.co/storage/v1/object/public/music/Temani%20sampai%20pagi%20-%20AiSan%20(1).mp3"
-       download>
-       Download Lagu
-    </a>
-  </div>
+  <main>
+    <div class="section-title" id="lagu">
+      <h2>Daftar Lagu</h2>
+      <p>Pilih lagu, play, lalu download kalau kamu suka.</p>
+    </div>
 
-</div>
+    <div class="song-list">
 
-<footer>
-  © 2026 Aisan Music
-</footer>
+      <div class="song">
+        <div class="song-cover">🎵</div>
+
+        <div class="song-content">
+          <h3>Temani Sampai Pagi</h3>
+          <p>Lagu original karya AiSan Music.</p>
+
+          <audio controls>
+            <source src="https://czmcgqwtclnsxnwuyvza.supabase.co/storage/v1/object/public/music/Temani%20sampai%20pagi%20-%20AiSan%20(1).mp3" type="audio/mpeg">
+            Browser kamu tidak mendukung audio player.
+          </audio>
+
+          <div class="actions">
+            <a class="small-btn download"
+               href="https://czmcgqwtclnsxnwuyvza.supabase.co/storage/v1/object/public/music/Temani%20sampai%20pagi%20-%20AiSan%20(1).mp3"
+               download>
+              Download
+            </a>
+
+            <a class="small-btn"
+               href="https://wa.me/?text=Dengerin%20lagu%20AiSan%20Music:%20https://aisan-music.netlify.app"
+               target="_blank">
+              Share WA
+            </a>
+
+            <a class="small-btn"
+               href="https://aisan-music.netlify.app"
+               target="_blank">
+              Buka Website
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+      CARA TAMBAH LAGU BARU:
+      Copy dari <div class="song"> sampai </div> penutup lagu,
+      lalu paste di bawah lagu pertama.
+      Ganti judul, deskripsi, dan link MP3.
+      -->
+
+    </div>
+
+    <section class="about">
+      <h2>Tentang AiSan Music</h2>
+      <p>
+        Semua lagu di website ini adalah karya original AiSan Music.
+      </p>
+      <p>
+        Dilarang mengunggah ulang, menjual, atau menggunakan secara komersial
+        tanpa izin dari pemilik karya.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 AiSan Music. All rights reserved.
+  </footer>
 
 </body>
 </html>
