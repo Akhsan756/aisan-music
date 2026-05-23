@@ -7,6 +7,25 @@
 
   <style>
   
+  .hidden-song{
+  display:none;
+}
+
+.load-more{
+  text-align:center;
+  margin-top:25px;
+}
+
+.load-more button{
+  padding:14px 22px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(135deg,#7c3aed,#ec4899);
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+}
+  
   .search-box{
   margin: 18px 0 22px;
 }
@@ -733,6 +752,57 @@
       }
     });
   });
+</script>
+
+<script>
+
+const allSongs = document.querySelectorAll(".song");
+const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+let visible = 3;
+
+/* sembunyikan lagu setelah 3 pertama */
+allSongs.forEach((song, index) => {
+
+  if(index >= visible){
+    song.style.display = "none";
+  }
+
+});
+
+/* tombol lihat lainnya */
+loadMoreBtn.addEventListener("click", () => {
+
+  let hidden = 0;
+
+  allSongs.forEach((song) => {
+
+    if(song.style.display === "none" && hidden < 3){
+
+      song.style.display = "grid";
+      hidden++;
+
+    }
+
+  });
+
+  /* cek apakah masih ada lagu tersembunyi */
+  let stillHidden = false;
+
+  allSongs.forEach((song) => {
+
+    if(song.style.display === "none"){
+      stillHidden = true;
+    }
+
+  });
+
+  if(!stillHidden){
+    loadMoreBtn.style.display = "none";
+  }
+
+});
+
 </script>
 
 </body>
