@@ -403,7 +403,7 @@
   <input type="text" id="searchInput" placeholder="Cari lagu...">
 </div>
 
-    <div class="song-list">
+    <div class="song-list" id="originalList">
 
       <div class="song">
         <div class="song-cover">🎵</div>
@@ -905,7 +905,7 @@
     <p>Sound effect untuk video, intro, dan konten.</p>
   </div>
 
-  <div class="song-list">
+  <div class="song-list" id="originalList">
   <div class="song">
 
   <div class="song-cover"></div>
@@ -945,7 +945,7 @@
     <p>Musik bebas copyright sesuai lisensi pemiliknya.</p>
   </div>
 
-  <div class="song-list">
+  <div class="song-list" id="originalList">
   
 <div class="song">
 
@@ -997,13 +997,13 @@
     <div class="blog-card">
       <h3>Musik No Copyright</h3>
       <p>Referensi musik bebas copyright yang bisa digunakan sesuai lisensi pemiliknya.</p>
-      <a href="#nocopyright ">Baca Selengkapnya</a>
+      <a href="#nocopyright">Baca Selengkapnya</a>
     </div>
 
     <div class="blog-card">
       <h3>Music Original</h3>
       <p>Musik yang dihasilkan Ai dan dibuat oleh AiSan Music</p>
-      <a href="#original ">Baca Selengkapnya</a>
+      <a href="#original">Baca Selengkapnya</a>
     </div>
 
   </div>
@@ -1044,55 +1044,40 @@
 </script>
 
 <script>
-
-const allSongs = document.querySelectorAll(".song");
+const originalSongs = document.querySelectorAll("#originalList .song");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
 
 let visible = 3;
 
-/* sembunyikan lagu setelah 3 pertama */
-allSongs.forEach((song, index) => {
-
+originalSongs.forEach((song, index) => {
   if(index >= visible){
     song.style.display = "none";
   }
-
 });
 
-/* tombol lihat lainnya */
 loadMoreBtn.addEventListener("click", () => {
-
   let hidden = 0;
 
-  allSongs.forEach((song) => {
-
+  originalSongs.forEach((song) => {
     if(song.style.display === "none" && hidden < 3){
-
       song.style.display = "grid";
       hidden++;
-
     }
-
   });
 
-  /* cek apakah masih ada lagu tersembunyi */
   let stillHidden = false;
 
-  allSongs.forEach((song) => {
-
+  originalSongs.forEach((song) => {
     if(song.style.display === "none"){
       stillHidden = true;
     }
-
   });
 
   if(!stillHidden){
     loadMoreBtn.style.display = "none";
   }
-
 });
-
-</script>
+</script> 
 
 </body>
 </html>
