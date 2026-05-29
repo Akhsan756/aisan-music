@@ -402,6 +402,10 @@
   display:none;
 }
 
+.song.hidden-effect{
+  display:none;
+}
+
     .song-cover {
       width: 92px;
       height: 92px;
@@ -1249,7 +1253,7 @@
 
 </div>
 
-<div class="song">
+<div class="song hidden-effect">
 
   <div class="song-cover">🔊</div>
 
@@ -1280,6 +1284,11 @@
 
 
           </div>
+          <div class="load-more">
+  <button id="loadMoreEffect">
+    Lihat Effect Lainnya
+  </button>
+</div>
         </section>
 
         <section class="section-block" id="nocopyright">
@@ -1368,7 +1377,7 @@
   </div>
 </div> 
 
-<div class="song">
+<div class="song hidden-nc">
 
   <div class="song-cover">🎧</div>
 
@@ -1583,7 +1592,11 @@
         applyPagination();
 
         document.querySelectorAll("#effect .song").forEach((song) => {
-  song.style.display = "grid";
+  if(song.classList.contains("hidden-effect")){
+    song.style.display = "none";
+  } else {
+    song.style.display = "grid";
+  }
 });
 
 document.querySelectorAll("#nocopyright .song").forEach((song) => {
@@ -1611,6 +1624,19 @@ const hiddenNC = document.querySelectorAll(".hidden-nc");
 if(loadMoreNC){
   loadMoreNC.addEventListener("click", function(){
     hiddenNC.forEach(item=>{
+      item.style.display="grid";
+    });
+
+    this.style.display="none";
+  });
+}
+
+const loadMoreEffect = document.getElementById("loadMoreEffect");
+const hiddenEffect = document.querySelectorAll(".hidden-effect");
+
+if(loadMoreEffect){
+  loadMoreEffect.addEventListener("click", function(){
+    hiddenEffect.forEach(item=>{
       item.style.display="grid";
     });
 
