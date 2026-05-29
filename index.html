@@ -285,6 +285,10 @@
       background: rgba(2, 6, 23, .46);
     }
 
+.hidden-nc{
+  display:none;
+}
+
     .category-icon {
       width: 76px;
       height: 76px;
@@ -1284,7 +1288,14 @@
             <p>Musik bebas copyright sesuai lisensi pemiliknya.</p>
           </div>
 
-          <div class="song-list">
+<div class="load-more">
+  <button id="loadMoreNC">
+    Lihat Musik Lainnya
+  </button>
+</div>
+
+        <div class="song-list" id="ncList">
+        
 <div class="song">
 
   <div class="song-cover">NC</div>
@@ -1389,7 +1400,7 @@
   </div>
 </div> 
 
-<div class="song">
+<div class="song hidden-nc">
 
   <div class="song-cover">🎧</div>
 
@@ -1415,7 +1426,7 @@
   </div>
 </div>  
 
-<div class="song">
+<div class="song hidden-nc">
 
   <div class="song-cover">🎧</div>
 
@@ -1441,7 +1452,7 @@
   </div>
 </div> 
 
-<div class="song">
+<div class="song hidden-nc">
 
   <div class="song-cover">🎧</div>
 
@@ -1586,6 +1597,20 @@
         song.style.display = text.includes(keyword) ? "grid" : "none";
       });
     });
+    
+    const loadMoreNC = document.getElementById("loadMoreNC");
+const hiddenNC = document.querySelectorAll(".hidden-nc");
+
+if(loadMoreNC){
+  loadMoreNC.addEventListener("click", function(){
+    hiddenNC.forEach(item=>{
+      item.style.display="grid";
+    });
+
+    this.style.display="none";
+  });
+}
+
   </script>
 
 </body>
