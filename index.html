@@ -1288,12 +1288,6 @@
             <p>Musik bebas copyright sesuai lisensi pemiliknya.</p>
           </div>
 
-<div class="load-more">
-  <button id="loadMoreNC">
-    Lihat Musik Lainnya
-  </button>
-</div>
-
         <div class="song-list" id="ncList">
         
 <div class="song">
@@ -1483,6 +1477,11 @@
 
 
           </div>
+          <div class="load-more">
+  <button id="loadMoreNC">
+    Lihat Musik Lainnya
+  </button>
+</div>
         </section>
 
         <section class="section-block">
@@ -1583,9 +1582,17 @@
       if (keyword === "") {
         applyPagination();
 
-        document.querySelectorAll("#effect .song, #nocopyright .song").forEach((song) => {
-          song.style.display = "grid";
-        });
+        document.querySelectorAll("#effect .song").forEach((song) => {
+  song.style.display = "grid";
+});
+
+document.querySelectorAll("#nocopyright .song").forEach((song) => {
+  if(song.classList.contains("hidden-nc")){
+    song.style.display = "none";
+  } else {
+    song.style.display = "grid";
+  }
+});
 
         return;
       }
